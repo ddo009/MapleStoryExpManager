@@ -45,6 +45,10 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
             600613720956l, 606619858165l, 612686056746l, 618812917313l, 625001046486l, 631251056950l, 637563567519l, 643939203194l,
             650378595225l};//1~249 EXP TABLE
 
+    private int moogi = 74577; // 스타포스 정식기사E의 경험치
+    private int olgil = 89158; // 기계덩어리 의 경험치 내부 5마리는 포함되어있지않음.
+    private int gappan = 129324; // 강제네B의 경험치
+
     private Button mStartBt;
     private EditText mNowLv;
     private EditText mNowExp;
@@ -56,6 +60,9 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
     private TextView mProgressAimText;
     private TextView mProgressMaxText;
     private AdView adView;
+    private TextView mMooGiGo;
+    private TextView mSolgil;
+    private TextView mGapPan;
 
 
     @Override
@@ -98,6 +105,10 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
         mAimBar = (ProgressBar) findViewById(R.id.how_to_aim_bar);
         mMaxBar = (ProgressBar) findViewById(R.id.how_to_max_bar);
 
+        mMooGiGo = (TextView) findViewById(R.id.mogigo_text);
+        mSolgil = (TextView) findViewById(R.id.solgil_text);
+        mGapPan = (TextView) findViewById(R.id.gappan_text);
+
 
     }
 
@@ -118,7 +129,7 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
                 } else {
                     double sumNowExp = 0;
                     double sumAimExp = 0;
-                    double remainAimExp = 0;
+                    double remainAimExp;
                     double remainMaxExp = 0;
 
                     // 현재 Level 까지의 모든 경험치를 더함
@@ -160,6 +171,19 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
                     // 프로그레스바 세팅.
                     mAimBar.setProgress((int) bar1);
                     mMaxBar.setProgress((int) bar2);
+
+                    double a = remainAimExp / moogi;
+                    double b = remainAimExp / olgil;
+                    double c = remainAimExp / gappan;
+
+                    mMooGiGo.setText(String.format("%,.0f", a) + "마리의 몬스터를 잡아야합니다");
+                    mSolgil.setText(String.format("%,.0f", b) + "마리의 몬스터를 잡아야합니다");
+                    mGapPan.setText(String.format("%,.0f", c) + "마리의 몬스터를 잡아야합니다");
+
+                    findViewById(R.id.v1).setVisibility(View.VISIBLE);
+                    findViewById(R.id.v2).setVisibility(View.VISIBLE);
+                    findViewById(R.id.v3).setVisibility(View.VISIBLE);
+
                 }
             }
         } else { // 한칸이라도 빈칸이 존재할 경우 들어오는 곳
