@@ -136,7 +136,7 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
 
                     // 현재 Level까지의 모든 경험치를 더한 값에
                     // 현재 경험치 값을 더함
-                    sumNowExp += Integer.parseInt(mNowExp.getText().toString());
+                    sumNowExp += Double.parseDouble(mNowExp.getText().toString());
 
                     // 백분율을 구하는 식
                     double calculation1 = (sumNowExp / sumAimExp) * 100;
