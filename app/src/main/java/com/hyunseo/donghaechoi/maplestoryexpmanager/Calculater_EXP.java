@@ -98,6 +98,7 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
         mAimBar = (ProgressBar) findViewById(R.id.how_to_aim_bar);
         mMaxBar = (ProgressBar) findViewById(R.id.how_to_max_bar);
 
+
     }
 
     @Override
@@ -149,8 +150,8 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
                     remainMaxExp -= sumNowExp; // 250까지 남은 경험치
 
                     // 남은 경험치를 표시함.
-                    mResultText1.setText("" + (long) remainAimExp);
-                    mResultText2.setText("" + (long) remainMaxExp);
+                    mResultText1.setText(String.format("%,.0f", remainAimExp));
+                    mResultText2.setText(String.format("%,.0f", remainMaxExp));
 
                     // 남은 경험치의 퍼센트를 표시함.
                     mProgressAimText.setText(bar1 + "%");
