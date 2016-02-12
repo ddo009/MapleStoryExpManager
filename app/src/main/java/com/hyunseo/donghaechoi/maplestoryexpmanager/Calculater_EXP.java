@@ -1,4 +1,4 @@
-package com.example.donghaechoi.maplestoryexpmanager;
+package com.hyunseo.donghaechoi.maplestoryexpmanager;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +8,9 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 /**
  * Created by donghaechoi on 2016. 2. 11..
@@ -52,6 +55,7 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
     private TextView mResultText2;
     private TextView mProgressAimText;
     private TextView mProgressMaxText;
+    private AdView adView;
 
 
     @Override
@@ -59,6 +63,17 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_calculater);
+
+        adView = (AdView) findViewById(R.id.ads2);
+
+//        adView.setAdUnitId("ca-app-pub-2825752146789052/1929738325");
+//        adView.setAdSize(AdSize.BANNER);
+//        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.second_ads);
+//        linearLayout.addView(adView);
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+//        .addTestDevice("8054C85383F6061D16FC3F831CCE9A45")
+        adView.loadAd(adRequest);
 
         // 현재 레벨
         mNowLv = (EditText) findViewById(R.id.now_lv);
@@ -96,8 +111,8 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
             if (v.getId() == mStartBt.getId()) {
 
                 // 잘못된 값이 입력 될 경우 Toast 메세지를  출력함
-                if (mNowLv == null || mAimLv == null || nowLevelText <= 0 || aimLevelText < nowLevelText || aimLevelText > 250 ||
-                        nowLevelText > 250 || Integer.parseInt(mNowExp.getText().toString()) < 0 || Integer.parseInt(mNowExp.getText().toString()) > mExpTable[nowLevelText - 1]) {
+                if (nowLevelText == aimLevelText || nowLevelText <= 0 || aimLevelText < nowLevelText || aimLevelText > 250
+                        || nowLevelText > 250 || Double.parseDouble(mNowExp.getText().toString()) < 0 || Double.parseDouble(mNowExp.getText().toString()) > mExpTable[nowLevelText - 1]) {
                     Toast.makeText(Calculater_EXP.this, "잘못된 값을 입력하셨습니다.", Toast.LENGTH_SHORT).show();
                 } else {
                     double sumNowExp = 0;

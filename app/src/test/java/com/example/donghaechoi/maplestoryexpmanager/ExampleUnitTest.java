@@ -1,4 +1,4 @@
-package com.example.donghaechoi.maplestoryexpmanager;
+package com.hyunseo.donghaechoi.maplestoryexpmanager;
 
 import org.junit.Test;
 
