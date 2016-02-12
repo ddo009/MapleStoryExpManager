@@ -13,7 +13,7 @@ import android.widget.Toast;
  * Created by donghaechoi on 2016. 2. 11..
  */
 public class Calculater_EXP extends AppCompatActivity implements View.OnClickListener {
-
+    //    private Handler handler = new Handler();
     private final double[] mExpTable = {15, 34, 57, 92, 135, 372, 560, 840,
             1242, 1242, 1241, 1241, 1241, 1241, 1490, 1788, 2146, 2575, 3090,
             3708, 4450, 5340, 6408, 7690, 9228, 11074, 13289, 15947, 19136, 19136,
@@ -60,19 +60,26 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
 
         setContentView(R.layout.activity_calculater);
 
+        // 현재 레벨
         mNowLv = (EditText) findViewById(R.id.now_lv);
+        // 현재 경험치
         mNowExp = (EditText) findViewById(R.id.now_exp);
+        // 목표 레벨
         mAimLv = (EditText) findViewById(R.id.aim_lv);
 
+        // 프로그레스 바 아래 퍼센트가 출력되는 부분
         mProgressAimText = (TextView) findViewById(R.id.progressbar_aim_text);
         mProgressMaxText = (TextView) findViewById(R.id.progressbar_max_text);
 
+        // 계산 시작 버튼
         mStartBt = (Button) findViewById(R.id.calculation_exp);
         mStartBt.setOnClickListener(this);
 
+        // 최종 남은 경험치량 출력
         mResultText1 = (TextView) findViewById(R.id.result_1);
         mResultText2 = (TextView) findViewById(R.id.result_2);
 
+        // 프로그레스바
         mAimBar = (ProgressBar) findViewById(R.id.how_to_aim_bar);
         mMaxBar = (ProgressBar) findViewById(R.id.how_to_max_bar);
 
@@ -80,56 +87,84 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
+        // 빈칸이 없는지 확인함. 하나라도 비어있다면 아래 else문으로 감
         if (mNowLv.getText().length() != 0 && mAimLv.getText().length() != 0 && mNowExp.getText().length() != 0) {
             int nowLevelText = Integer.parseInt(mNowLv.getText().toString());
             int aimLevelText = Integer.parseInt(mAimLv.getText().toString());
 
+            // start 버튼을 클릭시 시작됨.
             if (v.getId() == mStartBt.getId()) {
+
+                // 잘못된 값이 입력 될 경우 Toast 메세지를  출력함
                 if (mNowLv == null || mAimLv == null || nowLevelText <= 0 || aimLevelText < nowLevelText || aimLevelText > 250 ||
-                        nowLevelText > 250 || Integer.parseInt(mNowExp.getText().toString()) < 0 || Integer.parseInt(mNowExp.getText().toString()) > mExpTable[nowLevelText]) {
+                        nowLevelText > 250 || Integer.parseInt(mNowExp.getText().toString()) < 0 || Integer.parseInt(mNowExp.getText().toString()) > mExpTable[nowLevelText - 1]) {
                     Toast.makeText(Calculater_EXP.this, "잘못된 값을 입력하셨습니다.", Toast.LENGTH_SHORT).show();
                 } else {
                     double sumNowExp = 0;
                     double sumAimExp = 0;
-                    double sumAim_Now_Exp;
-                    double minusMax_Now_Exp = 0;
+                    double remainAimExp = 0;
+                    double remainMaxExp = 0;
+
+                    // 현재 Level 까지의 모든 경험치를 더함
                     for (int i = 0; i < Integer.parseInt(mNowLv.getText().toString()) - 1; i++) {
                         sumNowExp += mExpTable[i];
                     }
+                    // 목표 Level 까지의 모든 경험치를 더함
                     for (int i = 0; i < Integer.parseInt(mAimLv.getText().toString()) - 1; i++) {
                         sumAimExp += mExpTable[i];
                     }
+                    // 250 level 까지의 모든 경험치를 더함
                     for (int i = 0; i < 249; i++) {
-                        minusMax_Now_Exp += mExpTable[i];
+                        remainMaxExp += mExpTable[i];
                     }
-                    if (mNowExp.getText().toString() != null) {
-                        sumNowExp += Integer.parseInt(mNowExp.getText().toString());
-                    }
-                    double calculation1 = (sumNowExp / sumAimExp) * 100;
-                    double calculation2 = (sumNowExp / minusMax_Now_Exp) * 100;
 
+                    // 현재 Level까지의 모든 경험치를 더한 값에
+                    // 현재 경험치 값을 더함
+                    sumNowExp += Integer.parseInt(mNowExp.getText().toString());
+
+                    // 백분율을 구하는 식
+                    double calculation1 = (sumNowExp / sumAimExp) * 100;
+                    double calculation2 = (sumNowExp / remainMaxExp) * 100;
+
+                    // 소수점 4번쨰 자리에서 반올림 하여 소수점 3자리까지만 나오게함.
                     double bar1 = Double.parseDouble(String.format("%.3f", calculation1));
                     double bar2 = Double.parseDouble(String.format("%.3f", calculation2));
 
-                    sumAim_Now_Exp = sumAimExp - sumNowExp; // 목표 까지 남은경험치
-                    minusMax_Now_Exp -= sumNowExp; // 250까지 남은 경험치
+                    remainAimExp = sumAimExp - sumNowExp; // 목표 까지 남은경험치
+                    remainMaxExp -= sumNowExp; // 250까지 남은 경험치
 
-                    mResultText1.setText("" + (long) sumAim_Now_Exp);
-                    mResultText2.setText("" + (long) minusMax_Now_Exp);
+                    // 남은 경험치를 표시함.
+                    mResultText1.setText("" + (long) remainAimExp);
+                    mResultText2.setText("" + (long) remainMaxExp);
 
+                    // 남은 경험치의 퍼센트를 표시함.
                     mProgressAimText.setText(bar1 + "%");
                     mProgressMaxText.setText(bar2 + "%");
 
-                    mAimBar.setVisibility(ProgressBar.VISIBLE);
-                    mAimBar.incrementProgressBy((int) bar1);
-                    mAimBar.setIndeterminate(true);
-                    mMaxBar.setVisibility(ProgressBar.VISIBLE);
-                    mMaxBar.incrementProgressBy((int) bar2);
-                    mMaxBar.setIndeterminate(true);
+                    // 프로그레스바 세팅.
+                    mAimBar.setProgress((int) bar1);
+                    mMaxBar.setProgress((int) bar2);
                 }
             }
-        } else {
+        } else { // 한칸이라도 빈칸이 존재할 경우 들어오는 곳
             Toast.makeText(Calculater_EXP.this, "빈칸 없이 입력해주세요", Toast.LENGTH_SHORT).show();
         }
     }
+
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        Thread threadSleep = new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                while (true) {
+//                    try {
+//                        Thread.sleep(100);
+//                    } catch (InterruptedException e) {
+//                    }
+//                }
+//            }
+//        });
+//        threadSleep.start();
+//    }
 }

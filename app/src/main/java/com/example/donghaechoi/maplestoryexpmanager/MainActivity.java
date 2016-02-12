@@ -16,9 +16,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // 시작버튼과 종료버튼
         mStartButton = (Button) findViewById(R.id.start_bt);
         mEndButton = (Button) findViewById(R.id.end_bt);
-
         mStartButton.setOnClickListener(this);
         mEndButton.setOnClickListener(this);
 
@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-
         switch (v.getId()) {
             case R.id.start_bt: {
                 Intent intent = new Intent(this, Calculater_EXP.class);
