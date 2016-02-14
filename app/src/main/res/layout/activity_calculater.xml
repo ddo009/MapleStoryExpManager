@@ -29,7 +29,7 @@
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:hint="현재 레밸"
+                    android:hint="현재 레벨"
                     android:inputType="number" />
 
                 <EditText
@@ -53,7 +53,7 @@
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:hint="목표 레밸"
+                    android:hint="목표 레벨"
                     android:inputType="number" />
 
                 <Button
@@ -156,64 +156,68 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/v1"
+                android:id="@+id/result_linear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:visibility="gone">
 
-                <TextView
+                <CheckBox
+                    android:id="@+id/low_level"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="무기고2에서 " />
+                    android:text="현재 레벨이 165 미만일 경우 체크" />
 
                 <TextView
-                    android:id="@+id/mogigo_text"
+                    android:id="@+id/l1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="" />
+                    android:text=""
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/l2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/l3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:visibility="gone" />
+
+                <CheckBox
+                    android:id="@+id/high_level"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="현재 레벨이 165 이상일 경우 체크" />
+
+                <TextView
+                    android:id="@+id/v1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/v2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/v3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:visibility="gone" />
 
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/v2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:visibility="gone">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="스올길에서 " />
-
-                <TextView
-                    android:id="@+id/solgil_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/v3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:visibility="gone">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="갑판5에서 " />
-
-                <TextView
-                    android:id="@+id/gappan_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="" />
-
-            </LinearLayout>
 
         </LinearLayout>
 
@@ -225,8 +229,6 @@
         android:layout_height="wrap_content"
         ads:adSize="BANNER"
         ads:adUnitId="ca-app-pub-2825752146789052/1929738325" />
-
-    />
 
 
 </LinearLayout>

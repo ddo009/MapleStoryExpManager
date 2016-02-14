@@ -1,9 +1,11 @@
-package com.hyunseo.donghaechoi.maplestoryexpmanager;
+package com.hyunseo.donghae.maplestoryexpmanager;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -15,7 +17,7 @@ import com.google.android.gms.ads.AdView;
 /**
  * Created by donghaechoi on 2016. 2. 11..
  */
-public class Calculater_EXP extends AppCompatActivity implements View.OnClickListener {
+public class Calculater_EXP extends AppCompatActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
     //    private Handler handler = new Handler();
     private final double[] mExpTable = {15, 34, 57, 92, 135, 372, 560, 840,
             1242, 1242, 1241, 1241, 1241, 1241, 1490, 1788, 2146, 2575, 3090,
@@ -45,9 +47,14 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
             600613720956l, 606619858165l, 612686056746l, 618812917313l, 625001046486l, 631251056950l, 637563567519l, 643939203194l,
             650378595225l};//1~249 EXP TABLE
 
-    private int moogi = 74577; // 스타포스 정식기사E의 경험치
-    private int olgil = 89158; // 기계덩어리 의 경험치 내부 5마리는 포함되어있지않음.
-    private int gappan = 129324; // 강제네B의 경험치
+
+    private final int moogi = 74577; // 스타포스 정식기사E의 경험치
+    private final int olgil = 89158; // 기계덩어리 의 경험치 내부 5마리는 포함되어있지않음.
+    private final int gappan = 129324; // 강제네B의 경험치
+
+    private final int moraedodeojui = 1145; // 사헬2 모래두더지 경험치
+    private final int saEti = 1399; // 관출 사이티 경험
+
 
     private Button mStartBt;
     private EditText mNowLv;
@@ -59,10 +66,17 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
     private TextView mResultText2;
     private TextView mProgressAimText;
     private TextView mProgressMaxText;
-    private AdView adView;
     private TextView mMooGiGo;
     private TextView mSolgil;
-    private TextView mGapPan;
+    private TextView mMiro;
+    private TextView mSahell;
+    private TextView mGwanChul;
+    private AdView adView;
+    private CheckBox mCheckLow;
+    private CheckBox mCheckHigh;
+
+    private double remainAimExp;
+    private double remainMaxExp = 0;
 
 
     @Override
@@ -105,9 +119,20 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
         mAimBar = (ProgressBar) findViewById(R.id.how_to_aim_bar);
         mMaxBar = (ProgressBar) findViewById(R.id.how_to_max_bar);
 
-        mMooGiGo = (TextView) findViewById(R.id.mogigo_text);
-        mSolgil = (TextView) findViewById(R.id.solgil_text);
-        mGapPan = (TextView) findViewById(R.id.gappan_text);
+        // 몬스터
+        mMooGiGo = (TextView) findViewById(R.id.v1);
+        mSolgil = (TextView) findViewById(R.id.v2);
+        mMiro = (TextView) findViewById(R.id.v3);
+
+        mSahell = (TextView) findViewById(R.id.l1);
+        mGwanChul = (TextView) findViewById(R.id.l2);
+
+
+        // 체크박스 두개
+        mCheckLow = (CheckBox) findViewById(R.id.low_level);
+        mCheckLow.setOnCheckedChangeListener(this);
+        mCheckHigh = (CheckBox) findViewById(R.id.high_level);
+        mCheckHigh.setOnCheckedChangeListener(this);
 
 
     }
@@ -129,8 +154,6 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
                 } else {
                     double sumNowExp = 0;
                     double sumAimExp = 0;
-                    double remainAimExp;
-                    double remainMaxExp = 0;
 
                     // 현재 Level 까지의 모든 경험치를 더함
                     for (int i = 0; i < Integer.parseInt(mNowLv.getText().toString()) - 1; i++) {
@@ -172,23 +195,50 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
                     mAimBar.setProgress((int) bar1);
                     mMaxBar.setProgress((int) bar2);
 
-                    double a = remainAimExp / moogi;
-                    double b = remainAimExp / olgil;
-                    double c = remainAimExp / gappan;
-
-                    mMooGiGo.setText(String.format("%,.0f", a) + "마리의 몬스터를 잡아야합니다");
-                    mSolgil.setText(String.format("%,.0f", b) + "마리의 몬스터를 잡아야합니다");
-                    mGapPan.setText(String.format("%,.0f", c) + "마리의 몬스터를 잡아야합니다");
-
-                    findViewById(R.id.v1).setVisibility(View.VISIBLE);
-                    findViewById(R.id.v2).setVisibility(View.VISIBLE);
-                    findViewById(R.id.v3).setVisibility(View.VISIBLE);
+                    findViewById(R.id.result_linear).setVisibility(View.VISIBLE);
 
                 }
             }
         } else { // 한칸이라도 빈칸이 존재할 경우 들어오는 곳
             Toast.makeText(Calculater_EXP.this, "빈칸 없이 입력해주세요", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+        double a = remainAimExp / moogi;
+        double b = remainAimExp / olgil;
+        double c = remainAimExp / gappan;
+        double d = remainAimExp / moraedodeojui;
+        double e = remainAimExp / saEti;
+
+        if (buttonView.getId() == mCheckLow.getId()) {
+            if (isChecked) {
+                mSahell.setText(String.format("사헬지대2에서 " + "%,.0f", d) + "마리의 몬스터를 잡아야합니다");
+                mGwanChul.setText(String.format("관계자외 출입금지에서 " + "%,.0f", e) + "마리의 몬스터를 잡아야합니다");
+                mSahell.setVisibility(View.VISIBLE);
+                mGwanChul.setVisibility(View.VISIBLE);
+            } else {
+                mSahell.setVisibility(View.GONE);
+                mGwanChul.setVisibility(View.GONE);
+            }
+        } else if (buttonView.getId() == mCheckHigh.getId()) {
+            if (isChecked) {
+                mMooGiGo.setText(String.format("무기고에서 " + "%,.0f", a) + "마리의 몬스터를 잡아야합니다");
+                mSolgil.setText(String.format("스올길에서 " + "%,.0f", b) + "마리의 몬스터를 잡아야합니다");
+                mMiro.setText(String.format("미로5에서 " + "%,.0f", c) + "마리의 몬스터를 잡아야합니다");
+                mMooGiGo.setVisibility(View.VISIBLE);
+                mSolgil.setVisibility(View.VISIBLE);
+                mMiro.setVisibility(View.VISIBLE);
+            } else {
+                mMooGiGo.setVisibility(View.GONE);
+                mSolgil.setVisibility(View.GONE);
+                mMiro.setVisibility(View.GONE);
+            }
+
+        }
+
     }
 
 //    @Override

@@ -2,11 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/background2"
     android:id="@+id/main_ads"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.hyunseo.donghaechoi.maplestoryexpmanager.MainActivity">
+    tools:context="com.hyunseo.donghae.maplestoryexpmanager.MainActivity">
 
 
     <Button
@@ -37,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:text="Ver.1.01" />
+        android:text="Ver.1.1" />
 
     <!--<TextView-->
     <!--android:layout_width="wrap_content"-->
@@ -46,13 +45,12 @@
     <!--android:layout_alignParentRight="true"-->
     <!--/>-->
 
+    <!--<com.google.android.gms.ads.AdView-->
+    <!--android:id="@+id/ads"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--ads:adSize="BANNER"-->
+    <!--ads:adUnitId="ca-app-pub-2825752146789052/1929738325" />-->
 
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/ads1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-2825752146789052/1929738325" />
 
 </RelativeLayout>
