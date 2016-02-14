@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.hyunseo.donghae.maplestoryexpmanager.Calculater_EXP" />
+        <activity android:name=".LevelUpRoot" />
         <activity
             android:name="com.google.android.gms.ads.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
