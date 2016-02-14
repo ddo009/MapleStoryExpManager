@@ -8,6 +8,9 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 /**
  * Created by donghaechoi on 2016. 2. 14..
  */
@@ -37,6 +40,7 @@ public class LevelUpRoot extends AppCompatActivity implements CompoundButton.OnC
     private TextView mVel4_2;
     private TextView mVel4_3;
     private Button mBackButton;
+    private AdView adView;
 
 
     @Override
@@ -44,6 +48,11 @@ public class LevelUpRoot extends AppCompatActivity implements CompoundButton.OnC
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_level);
+
+        adView = (AdView) findViewById(R.id.ads);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+
 
         mBackButton = (Button) findViewById(R.id.back_button);
         mBackButton.setOnClickListener(this);
