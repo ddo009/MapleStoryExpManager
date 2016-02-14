@@ -256,68 +256,78 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
 //            private int saEti = 1399; // 관출 사이티 경험
 
 
-        } else if (buttonView.getId() == mSimbol.getId()) {
-            if (isChecked) {
-                moogi += 37288;
-                olgil += 44597;
-                miro += 64662;
-                moraedodeojui += 573;
-                saEti += 700;
-            } else {
-                moogi -= 37288;
-                olgil -= 44597;
-                miro -= 64662;
-                moraedodeojui -= 573;
-                saEti -= 700;
-            }
-        } else if (buttonView.getId() == mDouble.getId()) {
-            if (isChecked) {
-                moogi += 74577;
-                olgil += 89158;
-                miro += 129324;
-                moraedodeojui += 1145;
-                saEti += 1399;
-            } else {
-                moogi -= 74577;
-                olgil -= 89158;
-                miro -= 129324;
-                moraedodeojui -= 1145;
-                saEti -= 1399;
-            }
-        } else if (buttonView.getId() == mMersedes.getId()) {
-            if (isChecked) {
-                // 15퍼센트
-                moogi += 11186;
-                olgil += 13373;
-                miro += 19398;
-                moraedodeojui += 171;
-                saEti += 210;
-            } else {
-                moogi -= 11186;
-                olgil -= 13373;
-                miro -= 19398;
-                moraedodeojui -= 171;
-                saEti -= 210;
-            }
-        } else if (buttonView.getId() == mZero.getId()) {
-            if (isChecked) {
-                // 10퍼센트
-                moogi += 7458;
-                olgil += 8916;
-                miro += 12932;
-                moraedodeojui += 115;
-                saEti += 140;
-            } else {
-                moogi -= 7458;
-                olgil -= 8916;
-                miro -= 12932;
-                moraedodeojui -= 115;
-                saEti -= 140;
-            }
         }
+        if (buttonView.getId() != mCheckHigh.getId() && buttonView.getId() != mCheckLow.getId()) {
 
+            if (mCheckLow.isChecked() == true) {
+                mCheckLow.setChecked(false);
+            }
+            if (mCheckHigh.isChecked() == true) {
+                mCheckHigh.setChecked(false);
+            }
+
+            if (buttonView.getId() == mSimbol.getId()) {
+                if (isChecked) {
+                    moogi += 37288;
+                    olgil += 44597;
+                    miro += 64662;
+                    moraedodeojui += 573;
+                    saEti += 700;
+                } else {
+                    moogi -= 37288;
+                    olgil -= 44597;
+                    miro -= 64662;
+                    moraedodeojui -= 573;
+                    saEti -= 700;
+                }
+            } else if (buttonView.getId() == mDouble.getId()) {
+                if (isChecked) {
+                    moogi += 74577;
+                    olgil += 89158;
+                    miro += 129324;
+                    moraedodeojui += 1145;
+                    saEti += 1399;
+                } else {
+                    moogi -= 74577;
+                    olgil -= 89158;
+                    miro -= 129324;
+                    moraedodeojui -= 1145;
+                    saEti -= 1399;
+                }
+            } else if (buttonView.getId() == mMersedes.getId()) {
+                if (isChecked) {
+                    // 15퍼센트
+                    moogi += 11186;
+                    olgil += 13373;
+                    miro += 19398;
+                    moraedodeojui += 171;
+                    saEti += 210;
+                } else {
+                    moogi -= 11186;
+                    olgil -= 13373;
+                    miro -= 19398;
+                    moraedodeojui -= 171;
+                    saEti -= 210;
+                }
+            } else if (buttonView.getId() == mZero.getId()) {
+                if (isChecked) {
+                    // 10퍼센트
+                    moogi += 7458;
+                    olgil += 8916;
+                    miro += 12932;
+                    moraedodeojui += 115;
+                    saEti += 140;
+                } else {
+                    moogi -= 7458;
+                    olgil -= 8916;
+                    miro -= 12932;
+                    moraedodeojui -= 115;
+                    saEti -= 140;
+                }
+            }
+
+        }
     }
-
 //    @Override
 //    protected void onStart() {
 //        super.onStart();
