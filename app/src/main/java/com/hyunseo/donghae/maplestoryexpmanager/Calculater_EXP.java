@@ -48,12 +48,12 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
             650378595225l};//1~249 EXP TABLE
 
 
-    private final int moogi = 74577; // 스타포스 정식기사E의 경험치
-    private final int olgil = 89158; // 기계덩어리 의 경험치 내부 5마리는 포함되어있지않음.
-    private final int gappan = 129324; // 강제네B의 경험치
+    private int moogi = 74577; // 스타포스 정식기사E의 경험치
+    private int olgil = 89158; // 기계덩어리 의 경험치 내부 5마리는 포함되어있지않음.
+    private int miro = 129324; // 강제네B의 경험치
 
-    private final int moraedodeojui = 1145; // 사헬2 모래두더지 경험치
-    private final int saEti = 1399; // 관출 사이티 경험
+    private int moraedodeojui = 1145; // 사헬2 모래두더지 경험치
+    private int saEti = 1399; // 관출 사이티 경험
 
 
     private Button mStartBt;
@@ -77,6 +77,10 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
 
     private double remainAimExp;
     private double remainMaxExp = 0;
+    private CheckBox mSimbol;
+    private CheckBox mDouble;
+    private CheckBox mMersedes;
+    private CheckBox mZero;
 
 
     @Override
@@ -134,6 +138,14 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
         mCheckHigh = (CheckBox) findViewById(R.id.high_level);
         mCheckHigh.setOnCheckedChangeListener(this);
 
+        mSimbol = (CheckBox) findViewById(R.id.burning_check);
+        mSimbol.setOnCheckedChangeListener(this);
+        mDouble = (CheckBox) findViewById(R.id.double_check);
+        mDouble.setOnCheckedChangeListener(this);
+        mMersedes = (CheckBox) findViewById(R.id.mersedes_check);
+        mMersedes.setOnCheckedChangeListener(this);
+        mZero = (CheckBox) findViewById(R.id.zero_check);
+        mZero.setOnCheckedChangeListener(this);
 
     }
 
@@ -209,7 +221,7 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
 
         double a = remainAimExp / moogi;
         double b = remainAimExp / olgil;
-        double c = remainAimExp / gappan;
+        double c = remainAimExp / miro;
         double d = remainAimExp / moraedodeojui;
         double e = remainAimExp / saEti;
 
@@ -237,6 +249,71 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
                 mMiro.setVisibility(View.GONE);
             }
 
+//            private int moogi = 74577; // 스타포스 정식기사E의 경험치
+//            private int olgil = 89158; // 기계덩어리 의 경험치 내부 5마리는 포함되어있지않음.
+//            private int miro = 129324; // 강제네B의 경험치
+//            private int moraedodeojui = 1145; // 사헬2 모래두더지 경험치
+//            private int saEti = 1399; // 관출 사이티 경험
+
+
+        } else if (buttonView.getId() == mSimbol.getId()) {
+            if (isChecked) {
+                moogi += 37288;
+                olgil += 44597;
+                miro += 64662;
+                moraedodeojui += 573;
+                saEti += 700;
+            } else {
+                moogi -= 37288;
+                olgil -= 44597;
+                miro -= 64662;
+                moraedodeojui -= 573;
+                saEti -= 700;
+            }
+        } else if (buttonView.getId() == mDouble.getId()) {
+            if (isChecked) {
+                moogi += 74577;
+                olgil += 89158;
+                miro += 129324;
+                moraedodeojui += 1145;
+                saEti += 1399;
+            } else {
+                moogi -= 74577;
+                olgil -= 89158;
+                miro -= 129324;
+                moraedodeojui -= 1145;
+                saEti -= 1399;
+            }
+        } else if (buttonView.getId() == mMersedes.getId()) {
+            if (isChecked) {
+                // 15퍼센트
+                moogi += 11186;
+                olgil += 13373;
+                miro += 19398;
+                moraedodeojui += 171;
+                saEti += 210;
+            } else {
+                moogi -= 11186;
+                olgil -= 13373;
+                miro -= 19398;
+                moraedodeojui -= 171;
+                saEti -= 210;
+            }
+        } else if (buttonView.getId() == mZero.getId()) {
+            if (isChecked) {
+                // 10퍼센트
+                moogi += 7458;
+                olgil += 8916;
+                miro += 12932;
+                moraedodeojui += 115;
+                saEti += 140;
+            } else {
+                moogi -= 7458;
+                olgil -= 8916;
+                miro -= 12932;
+                moraedodeojui -= 115;
+                saEti -= 140;
+            }
         }
 
     }

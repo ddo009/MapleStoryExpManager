@@ -17,6 +17,34 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <CheckBox
+                android:id="@+id/burning_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1.5배 뿌리기 적용"
+                />
+
+            <CheckBox
+                android:id="@+id/double_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="두배 경험치 적용"
+                />
+
+            <CheckBox
+                android:id="@+id/mersedes_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="메르세데스 링크스킬 적용"
+                />
+
+            <CheckBox
+                android:id="@+id/zero_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="제로 캐릭터카드스킬 적용"
+                />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -68,7 +96,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="80dp"
+                android:layout_marginTop="50dp"
                 android:text="목표 레벨까지 얼마나 왔을까?" />
 
             <!-- 프레그레스바 들어갈 자리-->
