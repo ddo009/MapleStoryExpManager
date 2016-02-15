@@ -176,8 +176,10 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
                         sumAimExp += mExpTable[i];
                     }
                     // 250 level 까지의 모든 경험치를 더함
-                    for (int i = 0; i < 249; i++) {
-                        remainMaxExp += mExpTable[i];
+                    if (remainMaxExp == 0) {
+                        for (int i = 0; i < 249; i++) {
+                            remainMaxExp += mExpTable[i];
+                        }
                     }
 
                     // 현재 Level까지의 모든 경험치를 더한 값에
@@ -192,12 +194,13 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
                     double bar1 = Double.parseDouble(String.format("%.3f", calculation1));
                     double bar2 = Double.parseDouble(String.format("%.3f", calculation2));
 
+                    double remainMaxDouble = remainMaxExp - sumNowExp; // 250까지 남은 경험치
                     remainAimExp = sumAimExp - sumNowExp; // 목표 까지 남은경험치
-                    remainMaxExp -= sumNowExp; // 250까지 남은 경험치
+
 
                     // 남은 경험치를 표시함.
                     mResultText1.setText(String.format("%,.0f", remainAimExp));
-                    mResultText2.setText(String.format("%,.0f", remainMaxExp));
+                    mResultText2.setText(String.format("%,.0f", remainMaxDouble));
 
                     // 남은 경험치의 퍼센트를 표시함.
                     mProgressAimText.setText(bar1 + "%");
