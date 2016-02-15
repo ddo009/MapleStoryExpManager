@@ -54,6 +54,8 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
 
     private int moraedodeojui = 1145; // 사헬2 모래두더지 경험치
     private int saEti = 1399; // 관출 사이티 경험
+    private int darkWivern = 22782; // 검와둥 다크와이번
+    private int zombie = 16296;
 
 
     private Button mStartBt;
@@ -71,6 +73,9 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
     private TextView mMiro;
     private TextView mSahell;
     private TextView mGwanChul;
+    private TextView mWivern;
+    private TextView mZombie;
+
     private AdView adView;
     private CheckBox mCheckLow;
     private CheckBox mCheckHigh;
@@ -130,6 +135,8 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
 
         mSahell = (TextView) findViewById(R.id.l1);
         mGwanChul = (TextView) findViewById(R.id.l2);
+        mZombie = (TextView) findViewById(R.id.l3);
+        mWivern = (TextView) findViewById(R.id.l4);
 
 
         // 체크박스 두개
@@ -227,16 +234,25 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
         double c = remainAimExp / miro;
         double d = remainAimExp / moraedodeojui;
         double e = remainAimExp / saEti;
+        double f = remainAimExp / darkWivern;
+        double g = remainAimExp / zombie;
 
         if (buttonView.getId() == mCheckLow.getId()) {
             if (isChecked) {
                 mSahell.setText(String.format("사헬지대2에서 " + "%,.0f", d) + "마리의 몬스터를 잡아야합니다");
                 mGwanChul.setText(String.format("관계자외 출입금지에서 " + "%,.0f", e) + "마리의 몬스터를 잡아야합니다");
+                mWivern.setText(String.format("검은 와이번의 둥지에서 " + "%,.0f", f) + "마리의 몬스터를 잡아야합니다");
+                mZombie.setText(String.format("폐광에서 " + "%,.0f", g) + "마리의 몬스터를 잡아야합니다");
                 mSahell.setVisibility(View.VISIBLE);
                 mGwanChul.setVisibility(View.VISIBLE);
+                mWivern.setVisibility(View.VISIBLE);
+                mZombie.setVisibility(View.VISIBLE);
+
             } else {
                 mSahell.setVisibility(View.GONE);
                 mGwanChul.setVisibility(View.GONE);
+                mWivern.setVisibility(View.GONE);
+                mZombie.setVisibility(View.GONE);
             }
         } else if (buttonView.getId() == mCheckHigh.getId()) {
             if (isChecked) {
@@ -257,6 +273,8 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
 //            private int miro = 129324; // 강제네B의 경험치
 //            private int moraedodeojui = 1145; // 사헬2 모래두더지 경험치
 //            private int saEti = 1399; // 관출 사이티 경험
+//            private int darkWivern = 22782; // 검와둥 다크와이번
+//            private int zombie = 16296;
 
 
         }
@@ -271,31 +289,43 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
 
             if (buttonView.getId() == mSimbol.getId()) {
                 if (isChecked) {
+                    // 50퍼
                     moogi += 37288;
                     olgil += 44597;
                     miro += 64662;
                     moraedodeojui += 573;
                     saEti += 700;
+                    darkWivern += 11391;
+                    zombie += 8148;
+
+
                 } else {
                     moogi -= 37288;
                     olgil -= 44597;
                     miro -= 64662;
                     moraedodeojui -= 573;
                     saEti -= 700;
+                    darkWivern -= 1391;
+                    zombie -= 8148;
                 }
             } else if (buttonView.getId() == mDouble.getId()) {
                 if (isChecked) {
+                    // 2배
                     moogi += 74577;
                     olgil += 89158;
                     miro += 129324;
                     moraedodeojui += 1145;
                     saEti += 1399;
+                    darkWivern += 22782;
+                    zombie += 16296;
                 } else {
                     moogi -= 74577;
                     olgil -= 89158;
                     miro -= 129324;
                     moraedodeojui -= 1145;
                     saEti -= 1399;
+                    darkWivern -= 22782;
+                    zombie -= 16296;
                 }
             } else if (buttonView.getId() == mMersedes.getId()) {
                 if (isChecked) {
@@ -305,12 +335,16 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
                     miro += 19398;
                     moraedodeojui += 171;
                     saEti += 210;
+                    darkWivern += 3417;
+                    zombie += 2444;
                 } else {
                     moogi -= 11186;
                     olgil -= 13373;
                     miro -= 19398;
                     moraedodeojui -= 171;
                     saEti -= 210;
+                    darkWivern -= 3417;
+                    zombie -= 2444;
                 }
             } else if (buttonView.getId() == mZero.getId()) {
                 if (isChecked) {
@@ -320,12 +354,16 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
                     miro += 12932;
                     moraedodeojui += 115;
                     saEti += 140;
+                    darkWivern += 2287;
+                    zombie += 1630;
                 } else {
                     moogi -= 7458;
                     olgil -= 8916;
                     miro -= 12932;
                     moraedodeojui -= 115;
                     saEti -= 140;
+                    darkWivern -= 2287;
+                    zombie -= 1630;
                 }
             }
 

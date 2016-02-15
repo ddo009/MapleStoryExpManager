@@ -213,6 +213,13 @@
                     android:text=""
                     android:visibility="gone" />
 
+                <TextView
+                    android:id="@+id/l4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:visibility="gone" />
+
                 <CheckBox
                     android:id="@+id/high_level"
                     android:layout_width="wrap_content"
