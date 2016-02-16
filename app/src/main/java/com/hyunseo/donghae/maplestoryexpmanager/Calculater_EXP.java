@@ -55,8 +55,7 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
     private int moraedodeojui = 1145; // 사헬2 모래두더지 경험치
     private int saEti = 1399; // 관출 사이티 경험
     private int darkWivern = 22782; // 검와둥 다크와이번
-    private int zombie = 16296;
-
+    private int zombie = 16296; // 폐광 좀비
 
     private Button mStartBt;
     private EditText mNowLv;
@@ -68,13 +67,6 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
     private TextView mResultText2;
     private TextView mProgressAimText;
     private TextView mProgressMaxText;
-    private TextView mMooGiGo;
-    private TextView mSolgil;
-    private TextView mMiro;
-    private TextView mSahell;
-    private TextView mGwanChul;
-    private TextView mWivern;
-    private TextView mZombie;
 
     private AdView adView;
     private CheckBox mCheckLow;
@@ -82,10 +74,16 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
 
     private double remainAimExp;
     private double remainMaxExp = 0;
-    private CheckBox mSimbol;
+    private CheckBox mBburigi;
     private CheckBox mDouble;
     private CheckBox mMersedes;
     private CheckBox mZero;
+    private TextView mLowMonster;
+    private TextView mHighMonster;
+    private CheckBox mSimbolBuf;
+    private CheckBox mSimbolBishop;
+    private CheckBox mExtGold;
+    private CheckBox mPotion;
 
 
     @Override
@@ -95,6 +93,10 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_calculater);
 
         adView = (AdView) findViewById(R.id.ads2);
+
+
+//        mSpinner = (Spinner)
+
 
 //        adView.setAdUnitId("ca-app-pub-2825752146789052/1929738325");
 //        adView.setAdSize(AdSize.BANNER);
@@ -128,15 +130,10 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
         mAimBar = (ProgressBar) findViewById(R.id.how_to_aim_bar);
         mMaxBar = (ProgressBar) findViewById(R.id.how_to_max_bar);
 
-        // 몬스터
-        mMooGiGo = (TextView) findViewById(R.id.v1);
-        mSolgil = (TextView) findViewById(R.id.v2);
-        mMiro = (TextView) findViewById(R.id.v3);
-
-        mSahell = (TextView) findViewById(R.id.l1);
-        mGwanChul = (TextView) findViewById(R.id.l2);
-        mZombie = (TextView) findViewById(R.id.l3);
-        mWivern = (TextView) findViewById(R.id.l4);
+        // low 몬스터
+        mLowMonster = (TextView) findViewById(R.id.low_monster);
+        // high 몬스터
+        mHighMonster = (TextView) findViewById(R.id.high_monster);
 
 
         // 체크박스 두개
@@ -145,14 +142,24 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
         mCheckHigh = (CheckBox) findViewById(R.id.high_level);
         mCheckHigh.setOnCheckedChangeListener(this);
 
-        mSimbol = (CheckBox) findViewById(R.id.burning_check);
-        mSimbol.setOnCheckedChangeListener(this);
+
+        mSimbolBuf = (CheckBox) findViewById(R.id.simbol_buff);
+        mSimbolBuf.setOnCheckedChangeListener(this);
+        mSimbolBishop = (CheckBox) findViewById(R.id.simbol_bishop);
+        mSimbolBishop.setOnCheckedChangeListener(this);
+
+        mBburigi = (CheckBox) findViewById(R.id.burning_check);
+        mBburigi.setOnCheckedChangeListener(this);
         mDouble = (CheckBox) findViewById(R.id.double_check);
         mDouble.setOnCheckedChangeListener(this);
         mMersedes = (CheckBox) findViewById(R.id.mersedes_check);
         mMersedes.setOnCheckedChangeListener(this);
         mZero = (CheckBox) findViewById(R.id.zero_check);
         mZero.setOnCheckedChangeListener(this);
+
+        mExtGold = (CheckBox) findViewById(R.id.ext_gold);
+        mPotion = (CheckBox) findViewById(R.id.exp_potion);
+
 
     }
 
@@ -239,33 +246,26 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
 
         if (buttonView.getId() == mCheckLow.getId()) {
             if (isChecked) {
-                mSahell.setText(String.format("사헬지대2에서 " + "%,.0f", d) + "마리의 몬스터를 잡아야합니다");
-                mGwanChul.setText(String.format("관계자외 출입금지에서 " + "%,.0f", e) + "마리의 몬스터를 잡아야합니다");
-                mWivern.setText(String.format("검은 와이번의 둥지에서 " + "%,.0f", f) + "마리의 몬스터를 잡아야합니다");
-                mZombie.setText(String.format("폐광에서 " + "%,.0f", g) + "마리의 몬스터를 잡아야합니다");
-                mSahell.setVisibility(View.VISIBLE);
-                mGwanChul.setVisibility(View.VISIBLE);
-                mWivern.setVisibility(View.VISIBLE);
-                mZombie.setVisibility(View.VISIBLE);
-
+                StringBuffer sb = new StringBuffer();
+                sb.append(String.format("사헬지대2에서 " + "%,.0f", d) + "마리의 몬스터를 잡아야합니다\n")
+                        .append(String.format("관계자외 출입금지에서 " + "%,.0f", e) + "마리의 몬스터를 잡아야합니다\n")
+                        .append(String.format("검은 와이번의 둥지에서 " + "%,.0f", f) + "마리의 몬스터를 잡아야합니다\n")
+                        .append(String.format("폐광에서 " + "%,.0f", g) + "마리의 몬스터를 잡아야합니다");
+                mLowMonster.setText(sb);
+                mLowMonster.setVisibility(View.VISIBLE);
             } else {
-                mSahell.setVisibility(View.GONE);
-                mGwanChul.setVisibility(View.GONE);
-                mWivern.setVisibility(View.GONE);
-                mZombie.setVisibility(View.GONE);
+                mLowMonster.setVisibility(View.GONE);
             }
         } else if (buttonView.getId() == mCheckHigh.getId()) {
             if (isChecked) {
-                mMooGiGo.setText(String.format("무기고에서 " + "%,.0f", a) + "마리의 몬스터를 잡아야합니다");
-                mSolgil.setText(String.format("스올길에서 " + "%,.0f", b) + "마리의 몬스터를 잡아야합니다");
-                mMiro.setText(String.format("미로5에서 " + "%,.0f", c) + "마리의 몬스터를 잡아야합니다");
-                mMooGiGo.setVisibility(View.VISIBLE);
-                mSolgil.setVisibility(View.VISIBLE);
-                mMiro.setVisibility(View.VISIBLE);
+                StringBuffer sb2 = new StringBuffer();
+                sb2.append(String.format("무기고에서 " + "%,.0f", a) + "마리의 몬스터를 잡아야합니다\n")
+                        .append(String.format("스올길에서 " + "%,.0f", b) + "마리의 몬스터를 잡아야합니다\n")
+                        .append(String.format("미로5에서 " + "%,.0f", c) + "마리의 몬스터를 잡아야합니다");
+                mHighMonster.setText(sb2);
+                mHighMonster.setVisibility(View.VISIBLE);
             } else {
-                mMooGiGo.setVisibility(View.GONE);
-                mSolgil.setVisibility(View.GONE);
-                mMiro.setVisibility(View.GONE);
+                mHighMonster.setVisibility(View.GONE);
             }
 
 //            private int moogi = 74577; // 스타포스 정식기사E의 경험치
@@ -287,7 +287,7 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
                 mCheckHigh.setChecked(false);
             }
 
-            if (buttonView.getId() == mSimbol.getId()) {
+            if (buttonView.getId() == mBburigi.getId()) {
                 if (isChecked) {
                     // 50퍼
                     moogi += 37288;
@@ -297,8 +297,6 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
                     saEti += 700;
                     darkWivern += 11391;
                     zombie += 8148;
-
-
                 } else {
                     moogi -= 37288;
                     olgil -= 44597;
@@ -347,6 +345,85 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
                     zombie -= 2444;
                 }
             } else if (buttonView.getId() == mZero.getId()) {
+                if (isChecked) {
+                    // 10퍼센트
+                    moogi += 7458;
+                    olgil += 8916;
+                    miro += 12932;
+                    moraedodeojui += 115;
+                    saEti += 140;
+                    darkWivern += 2287;
+                    zombie += 1630;
+                } else {
+                    moogi -= 7458;
+                    olgil -= 8916;
+                    miro -= 12932;
+                    moraedodeojui -= 115;
+                    saEti -= 140;
+                    darkWivern -= 2287;
+                    zombie -= 1630;
+                }
+            } else if (buttonView.getId() == mSimbolBuf.getId()) {
+                if (isChecked) {
+                    mSimbolBishop.setEnabled(false);
+                    moogi += 37288;
+                    olgil += 44597;
+                    miro += 64662;
+                    moraedodeojui += 573;
+                    saEti += 700;
+                    darkWivern += 11391;
+                    zombie += 8148;
+                } else {
+                    mSimbolBishop.setEnabled(true);
+                    moogi -= 37288;
+                    olgil -= 44597;
+                    miro -= 64662;
+                    moraedodeojui -= 573;
+                    saEti -= 700;
+                    darkWivern -= 11391;
+                    zombie -= 8148;
+                }
+            } else if (buttonView.getId() == mSimbolBishop.getId()) {
+                if (isChecked) {
+                    mSimbolBuf.setEnabled(false);
+                    moogi += 52204;
+                    olgil += 62411;
+                    miro += 90527;
+                    moraedodeojui += 801;
+                    saEti += 979;
+                    darkWivern += 15947;
+                    zombie += 11407;
+
+                } else {
+                    mSimbolBuf.setEnabled(true);
+                    moogi -= 52204;
+                    olgil -= 62411;
+                    miro -= 90527;
+                    moraedodeojui -= 801;
+                    saEti -= 979;
+                    darkWivern -= 15947;
+                    zombie -= 11407;
+                }
+            } else if (buttonView.getId() == mExtGold.getId()) {
+                if (isChecked) {
+                    // 10퍼센트
+                    moogi += 7458;
+                    olgil += 8916;
+                    miro += 12932;
+                    moraedodeojui += 115;
+                    saEti += 140;
+                    darkWivern += 2287;
+                    zombie += 1630;
+                } else {
+                    moogi -= 7458;
+                    olgil -= 8916;
+                    miro -= 12932;
+                    moraedodeojui -= 115;
+                    saEti -= 140;
+                    darkWivern -= 2287;
+                    zombie -= 1630;
+                }
+            } else if (buttonView.getId() == mPotion.getId()) {
                 if (isChecked) {
                     // 10퍼센트
                     moogi += 7458;

@@ -18,6 +18,18 @@
             android:orientation="vertical">
 
             <CheckBox
+                android:id="@+id/simbol_buff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="홀리심볼 적용 (1.5배)" />
+
+            <CheckBox
+                android:id="@+id/simbol_bishop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="홀리심볼 (비숍전용 1.7배)" />
+
+            <CheckBox
                 android:id="@+id/burning_check"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -40,6 +52,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="제로 캐릭터카드스킬 적용" />
+
+            <CheckBox
+                android:id="@+id/ext_gold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="익스 골드 적용" />
+
+            <CheckBox
+                android:id="@+id/exp_potion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="경축비 적용" />
+
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -193,28 +218,7 @@
                     android:text="현재 레벨이 165 미만일 경우 체크" />
 
                 <TextView
-                    android:id="@+id/l1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:visibility="gone" />
-
-                <TextView
-                    android:id="@+id/l2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:visibility="gone" />
-
-                <TextView
-                    android:id="@+id/l3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:visibility="gone" />
-
-                <TextView
-                    android:id="@+id/l4"
+                    android:id="@+id/low_monster"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
@@ -227,25 +231,12 @@
                     android:text="현재 레벨이 165 이상일 경우 체크" />
 
                 <TextView
-                    android:id="@+id/v1"
+                    android:id="@+id/high_monster"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
                     android:visibility="gone" />
 
-                <TextView
-                    android:id="@+id/v2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:visibility="gone" />
-
-                <TextView
-                    android:id="@+id/v3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:visibility="gone" />
 
             </LinearLayout>
 
