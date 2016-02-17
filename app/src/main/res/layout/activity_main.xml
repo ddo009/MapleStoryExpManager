@@ -9,23 +9,31 @@
 
 
     <Button
-        android:id="@+id/start_bt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="경험치 계산 시작" />
-
-    <Button
         android:id="@+id/start2_bt"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/start_bt"
         android:layout_centerInParent="true"
         android:text="레벨별 사냥터 추천" />
 
     <Button
+        android:id="@+id/start_bt"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/start2_bt"
+        android:layout_centerHorizontal="true"
+        android:text="경험치 계산 시작" />
+
+    <!--<Button-->
+    <!--android:id="@+id/start3_bt"-->
+    <!--android:layout_width="150dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_below="@id/start2_bt"-->
+    <!--android:layout_centerInParent="true"-->
+    <!--android:text="스타포스 역계산기" />-->
+
+    <Button
         android:id="@+id/end_bt"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/start2_bt"
         android:layout_centerInParent="true"
@@ -36,7 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:text="Ver.1.2.2 제작자 : 엘리시움 돌아온헬렐레" />
+        android:text="Ver.1.3.1 제작자 : 엘리시움 돌아온헬렐레" />
 
     <!--<TextView-->
     <!--android:layout_width="wrap_content"-->

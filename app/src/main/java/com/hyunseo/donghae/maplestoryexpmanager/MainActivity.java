@@ -11,6 +11,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button mStartButton;
     private Button mEndButton;
     private Button mStart2Button;
+//    private Button mStart3Button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +24,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mStartButton = (Button) findViewById(R.id.start_bt);
         mStart2Button = (Button) findViewById(R.id.start2_bt);
         mEndButton = (Button) findViewById(R.id.end_bt);
+//        mStart3Button = (Button) findViewById(R.id.start3_bt);
+
         mStartButton.setOnClickListener(this);
         mStart2Button.setOnClickListener(this);
+//        mStart3Button.setOnClickListener(this);
         mEndButton.setOnClickListener(this);
 
 
@@ -47,6 +51,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             }
+//            case R.id.start3_bt: {
+//                Intent intent = new Intent(this, StarForce_Calculater.class);
+//                startActivity(intent);
+//                break;
+//            }
         }
     }
 }
