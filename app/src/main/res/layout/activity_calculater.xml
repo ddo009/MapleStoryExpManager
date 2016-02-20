@@ -18,53 +18,68 @@
             android:orientation="vertical">
 
             <CheckBox
-                android:id="@+id/simbol_buff"
+                android:id="@+id/buff_to_checkbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="홀리심볼 적용 (1.5배)" />
+                android:text="버프 선택 (체크하지 않아도 선택한 버프 적용)" />
 
-            <CheckBox
-                android:id="@+id/simbol_bishop"
+            <LinearLayout
+                android:id="@+id/vision_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="홀리심볼 (비숍전용 1.7배)" />
+                android:orientation="vertical"
+                android:visibility="gone">
 
-            <CheckBox
-                android:id="@+id/burning_check"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1.5배 뿌리기 적용" />
 
-            <CheckBox
-                android:id="@+id/double_check"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="두배 경험치 적용" />
+                <CheckBox
+                    android:id="@+id/simbol_buff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="홀리심볼 적용 (1.5배)" />
 
-            <CheckBox
-                android:id="@+id/mersedes_check"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="메르세데스 링크스킬 적용" />
+                <CheckBox
+                    android:id="@+id/simbol_bishop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="홀리심볼 (비숍전용 1.7배)" />
 
-            <CheckBox
-                android:id="@+id/zero_check"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="제로 캐릭터카드스킬 적용" />
+                <CheckBox
+                    android:id="@+id/burning_check"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1.5배 뿌리기 적용" />
 
-            <CheckBox
-                android:id="@+id/ext_gold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="익스 골드 적용" />
+                <CheckBox
+                    android:id="@+id/double_check"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="두배 경험치 적용" />
 
-            <CheckBox
-                android:id="@+id/exp_potion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="경축비 적용" />
+                <CheckBox
+                    android:id="@+id/mersedes_check"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="메르세데스 링크스킬 적용" />
 
+                <CheckBox
+                    android:id="@+id/zero_check"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="제로 캐릭터카드스킬 적용" />
+
+                <CheckBox
+                    android:id="@+id/ext_gold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="익스 골드 적용" />
+
+                <CheckBox
+                    android:id="@+id/exp_potion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="경축비 적용" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"

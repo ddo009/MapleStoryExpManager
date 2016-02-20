@@ -84,6 +84,7 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
     private CheckBox mSimbolBishop;
     private CheckBox mExtGold;
     private CheckBox mPotion;
+    private CheckBox mCheckBuffTrue;
 
 
     @Override
@@ -142,12 +143,16 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
         mCheckHigh = (CheckBox) findViewById(R.id.high_level);
         mCheckHigh.setOnCheckedChangeListener(this);
 
+        // 버프창 보이기 체크박스
+        mCheckBuffTrue = (CheckBox) findViewById(R.id.buff_to_checkbox);
+        mCheckBuffTrue.setOnCheckedChangeListener(this);
 
+
+        // 버프 체크박스
         mSimbolBuf = (CheckBox) findViewById(R.id.simbol_buff);
         mSimbolBuf.setOnCheckedChangeListener(this);
         mSimbolBishop = (CheckBox) findViewById(R.id.simbol_bishop);
         mSimbolBishop.setOnCheckedChangeListener(this);
-
         mBburigi = (CheckBox) findViewById(R.id.burning_check);
         mBburigi.setOnCheckedChangeListener(this);
         mDouble = (CheckBox) findViewById(R.id.double_check);
@@ -156,10 +161,10 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
         mMersedes.setOnCheckedChangeListener(this);
         mZero = (CheckBox) findViewById(R.id.zero_check);
         mZero.setOnCheckedChangeListener(this);
-
         mExtGold = (CheckBox) findViewById(R.id.ext_gold);
+        mExtGold.setOnCheckedChangeListener(this);
         mPotion = (CheckBox) findViewById(R.id.exp_potion);
-
+        mPotion.setOnCheckedChangeListener(this);
 
     }
 
@@ -444,6 +449,13 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
                 }
             }
 
+        }
+        if (buttonView.getId() == mCheckBuffTrue.getId()) {
+            if (mCheckBuffTrue.isChecked()) {
+                findViewById(R.id.vision_layout).setVisibility(View.VISIBLE);
+            } else {
+                findViewById(R.id.vision_layout).setVisibility(View.GONE);
+            }
         }
     }
 //    @Override
