@@ -20,7 +20,7 @@
         </activity>
         <activity android:name="com.hyunseo.donghae.maplestoryexpmanager.Calculater_EXP" />
         <activity android:name=".LevelUpRoot" />
-        <activity android:name=".StarForce_Calculater" />
+        <activity android:name=".Calculater_Pro" />
         <activity
             android:name="com.google.android.gms.ads.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
