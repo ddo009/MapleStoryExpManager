@@ -1,20 +1,19 @@
 package com.hyunseo.donghae.maplestoryexpmanager;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
-import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.mocoplex.adlib.AdlibActivity;
 
 /**
  * Created by donghaechoi on 2016. 2. 14..
  */
-public class LevelUpRoot extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, View.OnClickListener {
+public class LevelUpRoot extends AdlibActivity implements CompoundButton.OnCheckedChangeListener, View.OnClickListener {
 
     private CheckBox mCheckLoot1;
     private CheckBox mCheckLoot2;
@@ -42,16 +41,18 @@ public class LevelUpRoot extends AppCompatActivity implements CompoundButton.OnC
     private Button mBackButton;
     private AdView adView;
 
+//    protected void initAds() {
+//        AdlibConfig.getInstance().bindPlatform("SHALLWEAD", "com.hyunseo.donghae.maplestoryexpmanager.SubAdlibAdViewShallWeAd");
+//        setAdlibKey("56cfd4430cf27038eecfcb61");
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_level);
-
-        adView = (AdView) findViewById(R.id.ads);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        adView.loadAd(adRequest);
+//        initAds();
+//        this.setAdsContainer(R.id.ads);
 
 
         mBackButton = (Button) findViewById(R.id.back_button);

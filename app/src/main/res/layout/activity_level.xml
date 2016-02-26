@@ -227,11 +227,10 @@
         android:layout_marginBottom="16dp"
         android:text="메인 화면으로" />
 
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/ads"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-2825752146789052/1929738325" />
+    <!--<com.mocoplex.adlib.AdlibAdViewContainer-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/ads"-->
+        <!--isDefaultBanner="true" />-->
 
 </LinearLayout>

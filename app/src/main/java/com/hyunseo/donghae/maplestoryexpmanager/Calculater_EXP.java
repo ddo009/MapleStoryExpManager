@@ -1,7 +1,6 @@
 package com.hyunseo.donghae.maplestoryexpmanager;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -11,13 +10,13 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
+import com.mocoplex.adlib.AdlibActivity;
+import com.mocoplex.adlib.AdlibConfig;
 
 /**
  * Created by donghaechoi on 2016. 2. 11..
  */
-public class Calculater_EXP extends AppCompatActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
+public class Calculater_EXP extends AdlibActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
     //    private Handler handler = new Handler();
     private final double[] mExpTable = {15, 34, 57, 92, 135, 372, 560, 840,
             1242, 1242, 1241, 1241, 1241, 1241, 1490, 1788, 2146, 2575, 3090,
@@ -68,7 +67,8 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
     private TextView mProgressAimText;
     private TextView mProgressMaxText;
 
-    private AdView adView;
+//    private AdView adView;
+
     private CheckBox mCheckLow;
     private CheckBox mCheckHigh;
 
@@ -86,27 +86,30 @@ public class Calculater_EXP extends AppCompatActivity implements View.OnClickLis
     private CheckBox mPotion;
     private CheckBox mCheckBuffTrue;
 
+    protected void initAds() {
+        AdlibConfig.getInstance().bindPlatform("SHALLWEAD", "com.hyunseo.donghae.maplestoryexpmanager.SubAdlibAdViewShallWeAd");
+        setAdlibKey("56cfd4430cf27038eecfcb61");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_calculater);
+        initAds();
+        this.setAdsContainer(R.id.ads);
 
-        adView = (AdView) findViewById(R.id.ads2);
-
+//        adView = (AdView) findViewById(R.id.ads2);
 
 //        mSpinner = (Spinner)
-
-
-//        adView.setAdUnitId("ca-app-pub-2825752146789052/1929738325");
+//        adView.shallweadsdk_v1_20160111.jarSubAdlibAdViewShallWeAd.javasetAdUnitId("ca-app-pub-2825752146789052/1929738325");
 //        adView.setAdSize(AdSize.BANNER);
 //        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.second_ads);
 //        linearLayout.addView(adView);
 
-        AdRequest adRequest = new AdRequest.Builder().build();
+//        AdRequest adRequest = new AdRequest.Builder().build();
 //        .addTestDevice("8054C85383F6061D16FC3F831CCE9A45")
-        adView.loadAd(adRequest);
+//        adView.loadAd(adRequest);
 
         // 현재 레벨
         mNowLv = (EditText) findViewById(R.id.now_lv);

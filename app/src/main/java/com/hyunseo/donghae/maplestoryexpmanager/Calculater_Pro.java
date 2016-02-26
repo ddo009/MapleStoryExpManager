@@ -1,17 +1,18 @@
 package com.hyunseo.donghae.maplestoryexpmanager;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mocoplex.adlib.AdlibActivity;
+
 /**
  * Created by donghaechoi on 2016. 2. 25..
  */
-public class Calculater_Pro extends AppCompatActivity implements View.OnClickListener {
+public class Calculater_Pro extends AdlibActivity implements View.OnClickListener {
 
     private EditText mEditNowLv;
     private EditText mEditNowExp;
@@ -33,6 +34,8 @@ public class Calculater_Pro extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.propensity_activity);
+        this.setAdlibKey("56cfd4430cf27038eecfcb61");
+        this.setAdsContainer(R.id.ads);
 
         // 현재 성향 레벨
         mEditNowLv = (EditText) findViewById(R.id.now_prolv);
@@ -105,6 +108,11 @@ public class Calculater_Pro extends AppCompatActivity implements View.OnClickLis
                 // 남은 경험치의 퍼센트를 표시함.
                 mTextAimExp.setText(bar1 + "%");
                 mTextMaxExp.setText(bar2 + "%");
+
+                mAimBar.setProgress((int) bar1);
+                mMaxBar.setProgress((int) bar2);
+
+
             }
 
         } else {
