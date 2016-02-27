@@ -7,7 +7,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:padding="16dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -23,7 +24,7 @@
 
                 <EditText
                     android:id="@+id/now_prolv"
-                    android:layout_width="100dp"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:hint="현재 성향 레벨"
@@ -47,7 +48,7 @@
 
                 <EditText
                     android:id="@+id/aim_prolv"
-                    android:layout_width="100dp"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:hint="목표 성향 레벨"

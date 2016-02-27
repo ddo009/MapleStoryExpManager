@@ -68,7 +68,7 @@ public class Calculater_Pro extends AdlibActivity implements View.OnClickListene
             double aimLevelText = Double.parseDouble(mEditAimLv.getText().toString());
 
             if (nowLevelText > 100 || nowLevelText <= 0 || aimLevelText > 100 || aimLevelText < nowLevelText ||
-                    Integer.parseInt(mEditNowExp.getText().toString()) > PRO_EXP[(int) nowLevelText]) {
+                    Integer.parseInt(mEditNowExp.getText().toString()) > PRO_EXP[(int) nowLevelText - 1]) {
                 Toast.makeText(Calculater_Pro.this, "잘못된 값을 입력하셨습니다.", Toast.LENGTH_SHORT).show();
             } else {
 
@@ -77,10 +77,10 @@ public class Calculater_Pro extends AdlibActivity implements View.OnClickListene
                 double remainExp = 0;
 
 
-                for (int i = 0; i < nowLevelText - 1; i++) {
+                for (int i = 0; i < (int) nowLevelText - 1; i++) {
                     sumNowExp += PRO_EXP[i];
                 }
-                for (int i = 0; i < aimLevelText - 1; i++) {
+                for (int i = 0; i < (int) aimLevelText - 1; i++) {
                     sumAimExp += PRO_EXP[i];
                 }
                 for (int i = 0; i < PRO_EXP.length; i++) {
@@ -88,7 +88,7 @@ public class Calculater_Pro extends AdlibActivity implements View.OnClickListene
                 }
 
                 // 현재 경험치에 현재까지 더해진 경험치를 더함
-                sumNowExp += nowLevelText;
+                sumNowExp += Integer.parseInt(mEditNowExp.getText().toString());
 
                 // 백분율 구하는 식
                 double calculation1 = (sumNowExp / sumAimExp) * 100;
