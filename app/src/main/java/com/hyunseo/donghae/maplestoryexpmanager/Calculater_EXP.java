@@ -85,6 +85,7 @@ public class Calculater_EXP extends AdlibActivity implements View.OnClickListene
     private CheckBox mExtGold;
     private CheckBox mPotion;
     private CheckBox mCheckBuffTrue;
+    private CheckBox mRingbuff;
 
     protected void initAds() {
         AdlibConfig.getInstance().bindPlatform("SHALLWEAD", "com.hyunseo.donghae.maplestoryexpmanager.SubAdlibAdViewShallWeAd");
@@ -168,6 +169,8 @@ public class Calculater_EXP extends AdlibActivity implements View.OnClickListene
         mExtGold.setOnCheckedChangeListener(this);
         mPotion = (CheckBox) findViewById(R.id.exp_potion);
         mPotion.setOnCheckedChangeListener(this);
+        mRingbuff = (CheckBox) findViewById(R.id.exp_ring);
+        mRingbuff.setOnCheckedChangeListener(this);
 
     }
 
@@ -432,6 +435,25 @@ public class Calculater_EXP extends AdlibActivity implements View.OnClickListene
                     zombie -= 1630;
                 }
             } else if (buttonView.getId() == mPotion.getId()) {
+                if (isChecked) {
+                    // 10퍼센트
+                    moogi += 7458;
+                    olgil += 8916;
+                    miro += 12932;
+                    moraedodeojui += 115;
+                    saEti += 140;
+                    darkWivern += 2287;
+                    zombie += 1630;
+                } else {
+                    moogi -= 7458;
+                    olgil -= 8916;
+                    miro -= 12932;
+                    moraedodeojui -= 115;
+                    saEti -= 140;
+                    darkWivern -= 2287;
+                    zombie -= 1630;
+                }
+            } else if (buttonView.getId() == mRingbuff.getId()){
                 if (isChecked) {
                     // 10퍼센트
                     moogi += 7458;
