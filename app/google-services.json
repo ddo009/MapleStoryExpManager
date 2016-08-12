@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "2375672742",
+    "firebase_url": "https://mapleexpcalculater.firebaseio.com",
+    "project_id": "mapleexpcalculater",
+    "storage_bucket": "mapleexpcalculater.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:2375672742:android:21aac3ccf4df17aa",
+        "android_client_info": {
+          "package_name": "com.hyunseo.donghae.maplestoryexpmanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "2375672742-r1s3buj7q87mpa99v5e3luf4lg70amt3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5uMb92hPGXniV86D04ws8PSOxdyPP-98"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

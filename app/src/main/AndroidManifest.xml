@@ -25,8 +25,6 @@
             </intent-filter>
         </activity>
         <activity android:name="com.hyunseo.donghae.maplestoryexpmanager.Calculater_EXP" />
-        <activity android:name=".LevelUpRoot" />
-        <activity android:name=".Calculater_Pro" />
         <activity
             android:name="com.google.android.gms.ads.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
@@ -41,24 +39,5 @@
             android:name="com.mocoplex.adlib.AdlibVideoPlayer"
             android:configChanges="orientation|keyboard|keyboardHidden"
             android:theme="@android:style/Theme.NoTitleBar" />
-
-        <receiver android:name="com.co.shallwead.sdk.ShallWeAdReceiver" >
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_ADDED" />
-                <data android:scheme="package" />
-            </intent-filter>
-        </receiver>
-        <meta-data
-            android:name="ShallWeAd_Application_Key"
-            android:value="779391657" />
-        <activity
-            android:name="com.co.shallwead.sdk.activity.ShallWeAdActivity"
-            android:excludeFromRecents="true"
-            android:launchMode="singleInstance"
-            android:taskAffinity=""
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
     </application>
 </manifest>

@@ -8,8 +8,8 @@ android {
         applicationId "com.hyunseo.donghae.maplestoryexpmanager"
         minSdkVersion 15
         targetSdkVersion 23
-        versionCode 14
-        versionName "1.4.4"
+        versionCode 18
+        versionName "1.5.1"
     }
     buildTypes {
         release {
@@ -24,6 +24,8 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile files('libs/adlibr.4.0.1.6.jar')
     compile 'com.android.support:appcompat-v7:23.1.1'
-    compile 'com.google.android.gms:play-services-ads:8.4.0'
+    compile 'com.google.android.gms:play-services-ads:9.0.0'
     compile files('src/main/java/com/hyunseo/donghae/maplestoryexpmanager/adlib/adlibr.4.2.5.4.jar')
+    compile files('libs/adlibr.4.3.0.9.jar')
 }
+apply plugin: 'com.google.gms.google-services'

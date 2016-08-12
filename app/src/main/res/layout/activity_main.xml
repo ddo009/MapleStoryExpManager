@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_ads"
     android:layout_width="match_parent"
@@ -9,56 +8,19 @@
 
 
     <Button
-        android:id="@+id/start2_bt"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="레벨별 사냥터 추천" />
-
-    <Button
         android:id="@+id/start_bt"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_above="@id/start2_bt"
         android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
         android:text="경험치 계산 시작" />
-
-    <Button
-        android:id="@+id/start3_bt"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/start2_bt"
-        android:layout_centerInParent="true"
-        android:text="성향 계산기" />
-
-    <Button
-        android:id="@+id/end_bt"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/start3_bt"
-        android:layout_centerInParent="true"
-        android:text="프로그램 종료" />
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:text="Ver.1.4.3 제작자 : 엘리시움 돌아온헬렐레" />
-
-    <!--<TextView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_alignParentBottom="true"-->
-    <!--android:layout_alignParentRight="true"-->
-    <!--/>-->
-
-    <!--<com.google.android.gms.ads.AdView-->
-    <!--android:id="@+id/ads"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--ads:adSize="BANNER"-->
-    <!--ads:adUnitId="ca-app-pub-2825752146789052/1929738325" />-->
+        android:text="Ver.1.5.1 제작자 : 엘리시움 돌아온헬렐레" />
 
 
 </RelativeLayout>

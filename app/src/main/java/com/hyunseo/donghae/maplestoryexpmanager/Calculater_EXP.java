@@ -11,45 +11,46 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mocoplex.adlib.AdlibActivity;
-import com.mocoplex.adlib.AdlibConfig;
 
 /**
  * Created by donghaechoi on 2016. 2. 11..
  */
 public class Calculater_EXP extends AdlibActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
-    //    private Handler handler = new Handler();
+
     private final double[] mExpTable = {15, 34, 57, 92, 135, 372, 560, 840,
-            1242, 1242, 1241, 1241, 1241, 1241, 1490, 1788, 2146, 2575, 3090,
-            3708, 4450, 5340, 6408, 7690, 9228, 11074, 13289, 15947, 19136, 19136,
-            19136, 19136, 19136, 19136, 22963, 27556, 33067, 39680, 47616, 51425,
-            55539, 59982, 64781, 69963, 75560, 81605, 88133, 95184, 102799, 111023, 119905, 129497,
-            139857, 151046, 163130, 176180, 190274, 205496, 221936, 239691, 258866, 279575, 301941,
-            326096, 352184, 380359, 410788, 433651, 479143, 479143, 479143, 479143, 479143, 479143,
-            512683, 548571, 586971, 629059, 672023, 719065, 769400, 823258, 880886, 943548, 1008526,
-            1079123, 1154662, 1235448, 1321372, 1414510, 1513516, 1619473, 1732836, 1854135, 1983924,
-            2122799, 2271395, 2430393, 2600521, 2782557, 2997336, 3185750, 3408758, 3647336, 3902682,
-            4175870, 4468181, 4780954, 5115621, 5473714, 5856874, 6266855, 6705545, 7174922, 7677167,
-            8214569, 8789589, 9404860, 10063200, 10063200, 10063200, 10063200, 10063200, 10063200, 10767624,
-            11521358, 12357853, 13190803, 14114759, 15102150, 16159301, 17290452, 18500784, 19795839, 21281548,
-            22664256, 24250754, 25948307, 27764188, 29708216, 31787791, 34102936, 36393842, 38941411, 41667310,
-            44584022, 47704904, 51044247, 54617344, 58440558, 62531937, 66908595, 71592197, 76603651, 81965907,
-            87703520, 93842766, 100411760, 107440583, 113887018, 120722023, 127963453, 135641260, 143779736,
-            152406520, 161550911, 171243966, 181518604, 192409720, 203954303, 216191561, 229163055, 242912838,
-            257478608, 272836864, 289313076, 306671861, 325072173, 344576503, 344576503, 378166159, 410396129,
-            435019857, 461121091, 488788356, 518115657, 549202596, 582154752, 617084037, 654109079, 693355624,
-            734956961, 779054379, 825797642, 875345501, 927866241, 983583205, 1042550497, 1105103527, 2207026470l,
-            2648431764l, 3178118116l, 3813741739l, 4576490086l, 5491788103l, 6590145723l, 7908174867l, 9489809840l,
-            11387771808l, 24142076232l, 25590600805l, 27126036853l, 28753599064l, 30478815007l, 32307543907l, 34245996541l,
-            36300756333l, 38478801712l, 40787529814l, 84838062013l, 88231584493l, 91760847872l, 95431281786l, 99248533057l,
-            103218474379l, 107347213354l, 111641101888l, 116106745963l, 120751015801l, 246332072234l, 251258713678l, 256283887951l,
+            1242, 1242, 1241, 1241, 1241, 1241, 1490, 1788, 2145, 2574, 3088,
+            3705, 4446, 5335, 6402, 7682, 9218, 11061, 13273, 15927, 19112, 19112,
+            19112, 19112, 19112, 19112, 22934, 27520, 33024, 39628, 47553, 51357,
+            55465, 59902, 64694, 69869, 75458, 81494, 88013, 95054, 102658, 110870, 119739,
+            129318, 139663, 150836, 162902, 175934, 190008, 205208, 221624, 221624, 221624, 221624, 221624,
+            221624, 238245, 256113, 275321, 295970, 318167, 342029, 367681, 395257, 424901, 456768,
+            488741, 522952, 559558, 598727, 640637, 685481, 733464, 784806, 839742, 898523, 961419,
+            1028718, 1100728, 1177778, 1260222, 1342136, 1429374, 1522283, 1621231, 1726611, 1838840,
+            1958364, 2085657, 2221224, 2365603, 2365603, 2365603, 2365603, 2365603, 2365603, 2519367,
+            2683125, 2857528, 3043267, 3241079, 3451749, 3676112, 3915059, 4169537, 4440556, 4729192,
+            5036589, 5363967, 5712624, 6083944, 6479400, 6900561, 7349097, 7826788, 8335529, 8877338,
+            9454364, 10068897, 10723375, 11420394, 12162719, 12953295, 13795259, 14691950, 15646926, 16663976,
+            17747134, 18900697, 20129242, 21437642, 22777494, 24201087, 25713654, 27320757, 29028304, 30842573,
+            32770233, 34818372, 36994520, 39306677, 41763344, 44373553, 47146900, 50093581, 53224429, 56550955,
+            60085389, 63840725, 67830770, 72070193, 76574580, 81360491, 86445521, 91848366, 97588888,
+            103688193, 110168705, 117054249, 124370139, 132143272, 140402226, 149177365, 158500950, 168407259,
+            178932712, 190116006, 201998256, 214623147, 228037093, 242289411, 256826775, 272236381, 288570563,
+            305884796, 324237883, 343692155, 364313684, 386172505, 409342855, 433903426, 459937631, 487533888,
+            516785921, 547793076, 580660660, 615500299, 652430316, 691576134, 733070702, 777054944, 2207026470L,
+            2648431764L, 3178118116L, 3813741739L, 4576490086L, 5491788103L, 6590145723L, 7908174867L, 9489809840L,
+            11387771808L, 24142076232L, 25590600805L, 27126036853L, 28753599064L, 30478815007L, 32307543907L, 34245996541L,
+            36300756333L, 38478801712L, 40787529814L, 84838062013L, 88231584493L, 91760847872L, 95431281786L, 99248533057L,
+            103218474379L, 107347213354L, 111641101888L, 116106745963L, 120751015801L, 246332072234L, 251258713678L, 256283887951L,
             261409565710l, 266637757024l, 271970512164l, 277409922407l, 282958120855l, 288617283272l, 294389628937l, 594667050452l,
             600613720956l, 606619858165l, 612686056746l, 618812917313l, 625001046486l, 631251056950l, 637563567519l, 643939203194l,
-            650378595225l};//1~249 EXP TABLE
+            650378595225l};//1~249EXPTABLE};//1~249 EXP TABLE
 
 
     private int moogi = 74577; // 스타포스 정식기사E의 경험치
     private int olgil = 89158; // 기계덩어리 의 경험치 내부 5마리는 포함되어있지않음.
     private int miro = 129324; // 강제네B의 경험치
+    private int ohwen = 129324; // 상왼줄
+    private int ohjul = 124604; // 상오줄
 
     private int moraedodeojui = 1145; // 사헬2 모래두더지 경험치
     private int saEti = 1399; // 관출 사이티 경험
@@ -66,8 +67,6 @@ public class Calculater_EXP extends AdlibActivity implements View.OnClickListene
     private TextView mResultText2;
     private TextView mProgressAimText;
     private TextView mProgressMaxText;
-
-//    private AdView adView;
 
     private CheckBox mCheckLow;
     private CheckBox mCheckHigh;
@@ -86,9 +85,9 @@ public class Calculater_EXP extends AdlibActivity implements View.OnClickListene
     private CheckBox mPotion;
     private CheckBox mCheckBuffTrue;
     private CheckBox mRingbuff;
+    private CheckBox mReadyPendent;
 
     protected void initAds() {
-        AdlibConfig.getInstance().bindPlatform("SHALLWEAD", "com.hyunseo.donghae.maplestoryexpmanager.SubAdlibAdViewShallWeAd");
         setAdlibKey("56cfd4430cf27038eecfcb61");
     }
 
@@ -99,18 +98,6 @@ public class Calculater_EXP extends AdlibActivity implements View.OnClickListene
         setContentView(R.layout.activity_calculater);
         initAds();
         this.setAdsContainer(R.id.ads);
-
-//        adView = (AdView) findViewById(R.id.ads2);
-
-//        mSpinner = (Spinner)
-//        adView.shallweadsdk_v1_20160111.jarSubAdlibAdViewShallWeAd.javasetAdUnitId("ca-app-pub-2825752146789052/1929738325");
-//        adView.setAdSize(AdSize.BANNER);
-//        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.second_ads);
-//        linearLayout.addView(adView);
-
-//        AdRequest adRequest = new AdRequest.Builder().build();
-//        .addTestDevice("8054C85383F6061D16FC3F831CCE9A45")
-//        adView.loadAd(adRequest);
 
         // 현재 레벨
         mNowLv = (EditText) findViewById(R.id.now_lv);
@@ -171,6 +158,9 @@ public class Calculater_EXP extends AdlibActivity implements View.OnClickListene
         mPotion.setOnCheckedChangeListener(this);
         mRingbuff = (CheckBox) findViewById(R.id.exp_ring);
         mRingbuff.setOnCheckedChangeListener(this);
+        mReadyPendent = (CheckBox) findViewById(R.id.ready_pendent);
+        mReadyPendent.setOnCheckedChangeListener(this);
+
 
     }
 
@@ -194,10 +184,12 @@ public class Calculater_EXP extends AdlibActivity implements View.OnClickListene
 
                     // 현재 Level 까지의 모든 경험치를 더함
                     for (int i = 0; i < Integer.parseInt(mNowLv.getText().toString()) - 1; i++) {
+//                        sumNowExp += mExpTable[i];
                         sumNowExp += mExpTable[i];
                     }
                     // 목표 Level 까지의 모든 경험치를 더함
                     for (int i = 0; i < Integer.parseInt(mAimLv.getText().toString()) - 1; i++) {
+//                        sumAimExp += mExpTable[i];
                         sumAimExp += mExpTable[i];
                     }
                     // 250 level 까지의 모든 경험치를 더함
@@ -250,6 +242,8 @@ public class Calculater_EXP extends AdlibActivity implements View.OnClickListene
         double a = remainAimExp / moogi;
         double b = remainAimExp / olgil;
         double c = remainAimExp / miro;
+        double ohwens = remainAimExp / ohwen;
+        double ohjuls = remainAimExp / ohjul;
         double d = remainAimExp / moraedodeojui;
         double e = remainAimExp / saEti;
         double f = remainAimExp / darkWivern;
@@ -272,6 +266,8 @@ public class Calculater_EXP extends AdlibActivity implements View.OnClickListene
                 StringBuffer sb2 = new StringBuffer();
                 sb2.append(String.format("무기고에서 " + "%,.0f", a) + "마리의 몬스터를 잡아야합니다\n")
                         .append(String.format("스올길에서 " + "%,.0f", b) + "마리의 몬스터를 잡아야합니다\n")
+                        .append(String.format("상왼줄에서 " + "%,.0f", ohwens) + "마리의 몬스터를 잡아야합니다\n")
+                        .append(String.format("상오줄에서 " + "%,.0f", ohjuls) + "마리의 몬스터를 잡아야합니다\n")
                         .append(String.format("미로5에서 " + "%,.0f", c) + "마리의 몬스터를 잡아야합니다");
                 mHighMonster.setText(sb2);
                 mHighMonster.setVisibility(View.VISIBLE);
@@ -286,6 +282,7 @@ public class Calculater_EXP extends AdlibActivity implements View.OnClickListene
 //            private int saEti = 1399; // 관출 사이티 경험
 //            private int darkWivern = 22782; // 검와둥 다크와이번
 //            private int zombie = 16296;
+//            private int ohjul = 124604; // 상오줄
 
 
         }
@@ -304,6 +301,8 @@ public class Calculater_EXP extends AdlibActivity implements View.OnClickListene
                     moogi += 37288;
                     olgil += 44597;
                     miro += 64662;
+                    ohwen += 64662;
+                    ohjul += 62302;
                     moraedodeojui += 573;
                     saEti += 700;
                     darkWivern += 11391;
@@ -312,6 +311,8 @@ public class Calculater_EXP extends AdlibActivity implements View.OnClickListene
                     moogi -= 37288;
                     olgil -= 44597;
                     miro -= 64662;
+                    ohwen -= 64662;
+                    ohjul -= 62302;
                     moraedodeojui -= 573;
                     saEti -= 700;
                     darkWivern -= 1391;
@@ -323,6 +324,8 @@ public class Calculater_EXP extends AdlibActivity implements View.OnClickListene
                     moogi += 74577;
                     olgil += 89158;
                     miro += 129324;
+                    ohwen += 129324;
+                    ohjul += 124604;
                     moraedodeojui += 1145;
                     saEti += 1399;
                     darkWivern += 22782;
@@ -331,6 +334,8 @@ public class Calculater_EXP extends AdlibActivity implements View.OnClickListene
                     moogi -= 74577;
                     olgil -= 89158;
                     miro -= 129324;
+                    ohwen -= 129324;
+                    ohjul -= 124604;
                     moraedodeojui -= 1145;
                     saEti -= 1399;
                     darkWivern -= 22782;
@@ -342,6 +347,8 @@ public class Calculater_EXP extends AdlibActivity implements View.OnClickListene
                     moogi += 11186;
                     olgil += 13373;
                     miro += 19398;
+                    ohwen += 19398;
+                    ohjul += 18690;
                     moraedodeojui += 171;
                     saEti += 210;
                     darkWivern += 3417;
@@ -350,6 +357,8 @@ public class Calculater_EXP extends AdlibActivity implements View.OnClickListene
                     moogi -= 11186;
                     olgil -= 13373;
                     miro -= 19398;
+                    ohwen -= 19398;
+                    ohjul -= 18690;
                     moraedodeojui -= 171;
                     saEti -= 210;
                     darkWivern -= 3417;
@@ -361,6 +370,8 @@ public class Calculater_EXP extends AdlibActivity implements View.OnClickListene
                     moogi += 7458;
                     olgil += 8916;
                     miro += 12932;
+                    ohwen += 12932;
+                    ohjul += 12460;
                     moraedodeojui += 115;
                     saEti += 140;
                     darkWivern += 2287;
@@ -369,6 +380,8 @@ public class Calculater_EXP extends AdlibActivity implements View.OnClickListene
                     moogi -= 7458;
                     olgil -= 8916;
                     miro -= 12932;
+                    ohwen -= 12932;
+                    ohjul -= 12460;
                     moraedodeojui -= 115;
                     saEti -= 140;
                     darkWivern -= 2287;
@@ -380,6 +393,8 @@ public class Calculater_EXP extends AdlibActivity implements View.OnClickListene
                     moogi += 37288;
                     olgil += 44597;
                     miro += 64662;
+                    ohwen += 64662;
+                    ohjul += 62302;
                     moraedodeojui += 573;
                     saEti += 700;
                     darkWivern += 11391;
@@ -389,6 +404,8 @@ public class Calculater_EXP extends AdlibActivity implements View.OnClickListene
                     moogi -= 37288;
                     olgil -= 44597;
                     miro -= 64662;
+                    ohjul -= 62302;
+                    ohwen -= 64662;
                     moraedodeojui -= 573;
                     saEti -= 700;
                     darkWivern -= 11391;
@@ -400,6 +417,8 @@ public class Calculater_EXP extends AdlibActivity implements View.OnClickListene
                     moogi += 52204;
                     olgil += 62411;
                     miro += 90527;
+                    ohwen += 90527;
+                    ohjul += 87223;
                     moraedodeojui += 801;
                     saEti += 979;
                     darkWivern += 15947;
@@ -410,6 +429,8 @@ public class Calculater_EXP extends AdlibActivity implements View.OnClickListene
                     moogi -= 52204;
                     olgil -= 62411;
                     miro -= 90527;
+                    ohwen -= 90527;
+                    ohjul -= 87223;
                     moraedodeojui -= 801;
                     saEti -= 979;
                     darkWivern -= 15947;
@@ -421,6 +442,8 @@ public class Calculater_EXP extends AdlibActivity implements View.OnClickListene
                     moogi += 7458;
                     olgil += 8916;
                     miro += 12932;
+                    ohwen += 12932;
+                    ohjul += 12406;
                     moraedodeojui += 115;
                     saEti += 140;
                     darkWivern += 2287;
@@ -429,6 +452,8 @@ public class Calculater_EXP extends AdlibActivity implements View.OnClickListene
                     moogi -= 7458;
                     olgil -= 8916;
                     miro -= 12932;
+                    ohwen -= 12932;
+                    ohjul -= 12406;
                     moraedodeojui -= 115;
                     saEti -= 140;
                     darkWivern -= 2287;
@@ -440,6 +465,8 @@ public class Calculater_EXP extends AdlibActivity implements View.OnClickListene
                     moogi += 7458;
                     olgil += 8916;
                     miro += 12932;
+                    ohwen += 12932;
+                    ohjul += 12406;
                     moraedodeojui += 115;
                     saEti += 140;
                     darkWivern += 2287;
@@ -448,17 +475,21 @@ public class Calculater_EXP extends AdlibActivity implements View.OnClickListene
                     moogi -= 7458;
                     olgil -= 8916;
                     miro -= 12932;
+                    ohwen -= 12932;
+                    ohjul -= 12406;
                     moraedodeojui -= 115;
                     saEti -= 140;
                     darkWivern -= 2287;
                     zombie -= 1630;
                 }
-            } else if (buttonView.getId() == mRingbuff.getId()){
+            } else if (buttonView.getId() == mRingbuff.getId()) {
                 if (isChecked) {
                     // 10퍼센트
                     moogi += 7458;
                     olgil += 8916;
                     miro += 12932;
+                    ohwen += 12932;
+                    ohjul += 12406;
                     moraedodeojui += 115;
                     saEti += 140;
                     darkWivern += 2287;
@@ -467,10 +498,34 @@ public class Calculater_EXP extends AdlibActivity implements View.OnClickListene
                     moogi -= 7458;
                     olgil -= 8916;
                     miro -= 12932;
+                    ohwen -= 12932;
+                    ohjul -= 12406;
                     moraedodeojui -= 115;
                     saEti -= 140;
                     darkWivern -= 2287;
                     zombie -= 1630;
+                }
+            } else if (buttonView.getId() == mReadyPendent.getId()) {
+                if (isChecked) {
+                    moogi += 22373;
+                    olgil += 26747;
+                    miro += 38797;
+                    ohwen += 38797;
+                    ohjul += 37381;
+                    moraedodeojui += 343;
+                    saEti += 420;
+                    darkWivern += 6834;
+                    zombie += 4889;
+                } else {
+                    moogi -= 22373;
+                    olgil -= 26747;
+                    miro -= 38797;
+                    ohwen -= 38797;
+                    ohjul -= 37381;
+                    moraedodeojui -= 343;
+                    saEti -= 420;
+                    darkWivern -= 6834;
+                    zombie -= 4889;
                 }
             }
 
@@ -483,20 +538,4 @@ public class Calculater_EXP extends AdlibActivity implements View.OnClickListene
             }
         }
     }
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        Thread threadSleep = new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                while (true) {
-//                    try {
-//                        Thread.sleep(100);
-//                    } catch (InterruptedException e) {
-//                    }
-//                }
-//            }
-//        });
-//        threadSleep.start();
-//    }
 }
